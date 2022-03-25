@@ -125,10 +125,7 @@ function copyButtonClick(){
                         document.execCommand("copy");
                     }else{
                         // use new, more reliable method
-                        console.log(copyText)
-                        console.log(copyText.value)
-                        console.log(copyText.innerHTML)
-                        navigator.clipboard.writeText(copyText);
+                        navigator.clipboard.writeText(placeholder.value);
                     }
                     copyText.value = "";
                     break;
