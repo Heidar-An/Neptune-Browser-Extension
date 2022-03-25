@@ -12,6 +12,7 @@ It has a set of random characters which include uppercase and lowercase letters,
 
 Then, you name the password so you can remember what website the password was used for. Then, you click save and the password is saved.
 
+What makes it **super** secure, is that the password that you created to access your account is hashed using Sha-256!
 
 ## What to do if you have a concern or issue with the extension
 Email me at HeidarAn3@gmail.com
