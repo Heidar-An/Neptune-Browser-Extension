@@ -117,7 +117,7 @@ function copyButtonClick(){
 // When generate button has been pressed, it creates a password, puts it in a password placeholder box and then copies it to the users clipboard.
 document.getElementById("generate").addEventListener("click", function() {
     document.getElementById("passwordName").value = "";
-    var characters = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#%.,/£*&<>?!"]
+    var characters = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%.,/£*&<>?!"]
     //amount of letters between 10 and 14 characters
     var amount = Math.floor(((Math.random() * 101) / 7) + 10);
     var password = "";
