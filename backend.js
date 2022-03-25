@@ -10,11 +10,13 @@ window.addEventListener("load", async function() {
  */
 async function loadPasswords(){         
     document.getElementById("passwordTable").innerHTML = "";
+
     chrome.storage.sync.get(null, function(items) {
         var allKeys = Object.keys(items);
         
         var table = document.getElementById("passwordTable");
         var header = table.createTHead();
+        // for each key in the table, add the password name and a button to retrieve the password
         for(var i = 0; i < allKeys.length; i++){
             var passwordName = allKeys[i]; 
             var passwordRow = header.insertRow(i);
@@ -43,6 +45,7 @@ function checkAccountPasswordInput(){
         }else{
             // if no password, hide the (empty) password table
             document.getElementById("passwordTable").style.display = "none";
+            document.getElementById("").style.display = "none";
         }
     })
 }
