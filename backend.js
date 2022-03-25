@@ -63,9 +63,7 @@ document.getElementById("setAccountPassword").addEventListener("click", async fu
         accountPasswordInput.style.display = "none";
         document.getElementById("setAccountPassword").style.display = "none";
         hashVal = await sha256(accountPassword);      
-        chrome.storage.sync.set({"accountPassword": hashVal}, function(){
-            console.log("Set Password.");
-        })
+        chrome.storage.sync.set({"accountPassword": hashVal});
     }
 });
 
@@ -87,7 +85,6 @@ async function sha256(message) {
 
     // convert bytes to hex string   
     const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    console.log(hashHex) 
     return hashHex;
 }
 
@@ -106,7 +103,6 @@ function copyButtonClick(){
     }
     if(indices.length === 2){
         var passwordName = buttonString.slice(indices[0] + 1, indices[1]);
-        console.log(passwordName);
         chrome.storage.sync.get(null, function(items){
             var allKeys = Object.keys(items);
             
@@ -114,7 +110,6 @@ function copyButtonClick(){
                 var passwordNameKey = allKeys[i];
                 if(passwordNameKey === passwordName){
                     var password = items[passwordNameKey][0];
-                    console.log(password);
                     placeholder = document.getElementById("passwordPlaceholder");
                     placeholder.value = password;
                     var copyText = document.getElementById("passwordPlaceholder");
@@ -160,9 +155,7 @@ document.getElementById("generate").addEventListener("click", function() {
  * @param {string} popupId 
  */
 function copyTextPopup(popupId){
-    console.log("copy text popup function is being called");
     popup = document.getElementById(popupId);
-    console.log(popup + "= popup")
     popup.style.display = "block";
     setTimeout(function() {
         popup.style.display = "none";
@@ -175,13 +168,9 @@ function copyTextPopup(popupId){
 document.getElementById("savePassword").addEventListener("click", function() {
     var passwordName = document.getElementById("passwordName").value;
     var password = document.getElementById("passwordPlaceholder").value;
-    console.log(passwordName);
-    console.log(password);
     document.getElementById("passwordPlaceholder").value = "";
     document.getElementById("passwordName").value = "";
-    chrome.storage.sync.set({[passwordName]: [password]}, function(){
-        console.log("password has been set to " + passwordName);
-    });
+    chrome.storage.sync.set({[passwordName]: [password]});
     loadPasswords();
 });
 
