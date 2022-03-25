@@ -46,9 +46,13 @@ function checkAccountPasswordInput(){
             document.getElementById("accountPassword").style.display = "none";
             document.getElementById("setAccountPassword").style.display = "none";
         }else{
-            // if no password, hide the (empty) password table
+            // if no password, hide the (empty) password table and other elements
             document.getElementById("passwordTable").style.display = "none";
-            document.getElementById("").style.display = "none";
+            document.getElementById("generate").style.display = "none";
+            document.getElementById("passwordPlaceholder").style.display = "none";
+            document.getElementById("passwordName").style.display = "none";
+            document.getElementById("savePassword").style.display = "none";
+            document.getElementById("deleteButton").style.display = "none";
         }
     })
 }
@@ -124,7 +128,6 @@ function copyButtonClick(){
                         console.log(copyText.innerHTML)
                         navigator.clipboard.writeText(copyText);
                     }
-                    
                     copyText.value = "";
                     break;
                 }
