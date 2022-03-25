@@ -38,11 +38,10 @@ function checkAccountPasswordInput(){
     chrome.storage.sync.get("accountPassword", function(data){
         if(typeof data.accountPassword != "undefined"){
             // if there is a password saved then make the password setter go away
-            console.log("PASSWORD SET");
             document.getElementById("accountPassword").style.display = "none";
             document.getElementById("setAccountPassword").style.display = "none";
         }else{
-            console.log("NO PASSWORD SET");
+            // if no password, hide the (empty) password table
             document.getElementById("passwordTable").style.display = "none";
         }
     })
