@@ -53,6 +53,7 @@ function checkAccountPasswordInput(){
             document.getElementById("passwordName").style.display = "none";
             document.getElementById("savePassword").style.display = "none";
             document.getElementById("deleteButton").style.display = "none";
+            document.getElementById("verifyAccount").style.display = "none";
         }
     })
 }
