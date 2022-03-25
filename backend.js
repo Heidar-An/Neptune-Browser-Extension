@@ -91,12 +91,6 @@ async function sha256(message) {
     return hashHex;
 }
 
-//cell.innerHTML = "<p1 id=passwordNameCol>" + value[passwordKey] +"</p1>";
-// var cellTwo = passwordRow.insertCell(0);
-// var cell = passwordRow.insertCell(1);
-// cellTwo.innerHTML = "<b> Password name </b>";
-// cell.innerHTML = "<b> Password </b>";
-
 // when the copy button for a password saved is clicked, the password has to be retrieved and copied
 // to the user's clipboard
 function copyButtonClick(){
