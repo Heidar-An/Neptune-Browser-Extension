@@ -91,8 +91,11 @@ async function sha256(message) {
     return hashHex;
 }
 
-// when the copy button for a password saved is clicked, the password has to be retrieved and copied
-// to the user's clipboard
+
+/**
+ * when the copy button for a password saved is clicked, the password has to be retrieved and copied
+ * to the user's clipboard
+ */
 function copyButtonClick(){
     var buttonString = this.innerHTML;
     var indices = [];
