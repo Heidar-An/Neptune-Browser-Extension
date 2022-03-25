@@ -158,7 +158,14 @@ document.getElementById("generate").addEventListener("click", function() {
     placeholder.value = password;
     var copyText = document.getElementById("passwordPlaceholder");
     copyText.select();
-    document.execCommand("copy");
+    if(!navigator.clipboard){
+        // use old (deprecated) method if browser does not have navigator.clipboard
+        document.execCommand("copy");
+    }else{
+        // use new, more reliable method
+        navigator.clipboard.writeText(placeholder.value);
+    }
+    copyText.value = "";
     copyTextPopup("popUpCopy");
 });
 
