@@ -114,7 +114,17 @@ function copyButtonClick(){
                     placeholder.value = password;
                     var copyText = document.getElementById("passwordPlaceholder");
                     copyText.select();
-                    document.execCommand("copy");
+                    if(!navigator.clipboard){
+                        // use old (deprecated) method if browser does not have navigator.clipboard
+                        document.execCommand("copy");
+                    }else{
+                        // use new, more reliable method
+                        console.log(copyText)
+                        console.log(copyText.value)
+                        console.log(copyText.innerHTML)
+                        navigator.clipboard.writeText(copyText);
+                    }
+                    
                     copyText.value = "";
                     break;
                 }
