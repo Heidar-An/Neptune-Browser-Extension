@@ -3,11 +3,12 @@ window.addEventListener("load", async function() {
     await loadPasswords();
     checkAccountPasswordInput();
 });
+
 /**
- * @return {Promise} Promise which 
+ * loads all the passwords and puts them into a table
+ * @return {Promise} Promise returned from async function
  */
-// loads all the passwords and puts them into a table
-async function loadPasswords(){
+async function loadPasswords(){         
     document.getElementById("passwordTable").innerHTML = "";
     chrome.storage.sync.get(null, function(items) {
         var allKeys = Object.keys(items);
@@ -30,8 +31,10 @@ async function loadPasswords(){
     });
 }
 
-
-function checkAccountPasswordInput(){
+/**
+ * Checks if an account already has a password
+ */
+function checkAccountPasswordInput(){          
     chrome.storage.sync.get("accountPassword", function(data){
         if(typeof data.accountPassword != "undefined"){
             // if there is a password saved then make the password setter go away
@@ -45,32 +48,41 @@ function checkAccountPasswordInput(){
     })
 }
 
-// if verify account button has been pressed
-document.getElementById("setAccountPassword").addEventListener("click", function() {
-    console.log("hello there");
+/**
+ * Event listener to check if set account password button has been clicked
+ */
+document.getElementById("setAccountPassword").addEventListener("click", async function() {
     var accountPasswordInput = document.getElementById("accountPassword");
     var accountPassword = accountPasswordInput.value;
     if (accountPassword != ""){
         accountPasswordInput.style.display = "none";
         document.getElementById("setAccountPassword").style.display = "none";
-        hashVal = await(sha256(accountPassword));
+        hashVal = await sha256(accountPassword);      
         chrome.storage.sync.set({"accountPassword": hashVal}, function(){
             console.log("Set Password.");
         })
     }
 });
 
-//function to encode in sha256
+/**
+ * function to hash message with SHA-256
+ * @param {} message 
+ * @returns {Promise} Returns promise from async function
+ * @returns {String} The hashed value of the message in hexadecimal
+ */
 async function sha256(message) {
-    // encode as UTF-8
-    const msgBuffer = new TextEncoder().encode(message);                    
-    // hash the message
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    // encode as UTF-8 
+    const msgBuffer = new TextEncoder().encode(message);                   
+
+    // hash the message          
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); 
+
     // convert ArrayBuffer to Array
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    // convert bytes to hex string                  
+    const hashArray = Array.from(new Uint8Array(hashBuffer));            
+
+    // convert bytes to hex string   
     const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    console.log(hashHex)
+    console.log(hashHex) 
     return hashHex;
 }
 
@@ -114,13 +126,18 @@ function copyButtonClick(){
     }
 }
 
-// When generate button has been pressed, it creates a password, puts it in a password placeholder box and then copies it to the users clipboard.
+/**
+ * Event listener to check if generate password button has been clicked
+ * Generates a password and then saves it to the user's clipboard
+ */
 document.getElementById("generate").addEventListener("click", function() {
     document.getElementById("passwordName").value = "";
     var characters = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%.,/£*&<>?!"]
-    //amount of letters between 10 and 14 characters
+
+    // The amount of letters are between 10 and 14 characters
     var amount = Math.floor(((Math.random() * 101) / 7) + 10);
     var password = "";
+
     //add random letters from the characters array
     for(var i = 0; i < amount; i++){
         var letterPosition = Math.floor(Math.random() * characters[0].length);
@@ -136,7 +153,10 @@ document.getElementById("generate").addEventListener("click", function() {
     copyTextPopup("popUpCopy");
 });
 
-// used to make "copied!" popup show up for exactly 3 seconds
+/**
+ * used to make "copied!" popup show up for exactly 3 seconds
+ * @param {string} popupId 
+ */
 function copyTextPopup(popupId){
     console.log("copy text popup function is being called");
     popup = document.getElementById(popupId);
