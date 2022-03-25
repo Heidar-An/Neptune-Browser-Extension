@@ -54,6 +54,7 @@ function checkAccountPasswordInput(){
             document.getElementById("savePassword").style.display = "none";
             document.getElementById("deleteButton").style.display = "none";
             document.getElementById("verifyAccount").style.display = "none";
+            document.getElementById("verification").style.display = "none";
         }
     })
 }
