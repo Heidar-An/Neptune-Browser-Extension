@@ -66,7 +66,7 @@ document.getElementById("setAccountPassword").addEventListener("click", async fu
 
 /**
  * function to hash message with SHA-256
- * @param {} message 
+ * @param {String} message 
  * @returns {Promise} Returns promise from async function
  * @returns {String} The hashed value of the message in hexadecimal
  */
@@ -167,7 +167,9 @@ function copyTextPopup(popupId){
     }, 3000);
 }
 
-// If save button is pressed, then the name of the password is copied and saved.
+/**
+ * Event listener for save button, if pressed, store the name and password to memory
+ */
 document.getElementById("savePassword").addEventListener("click", function() {
     var passwordName = document.getElementById("passwordName").value;
     var password = document.getElementById("passwordPlaceholder").value;
@@ -181,7 +183,9 @@ document.getElementById("savePassword").addEventListener("click", function() {
     loadPasswords();
 });
 
-// If delete button is pressed, clear all passwords from memory.
+/**
+ * Event listener for delete button, if pressed, clear all password from memory
+ */
 document.getElementById("deleteButton").addEventListener("click", function(){
     chrome.storage.sync.clear();
     loadPasswords();
