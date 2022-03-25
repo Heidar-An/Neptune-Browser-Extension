@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="input.css">
+</head>
+<body style="width: 350px; height: 350px">
+    <img src="neptune48back.png">
+    <hr id="lines">
+    <h3 id="title">Neptune</h3>
+    <hr id="lines">
+    <div id="popUpCopy" style="display:none">Copied!</div>
+    <button id="generate">Generate</button>
+    <input id="passwordPlaceholder"></input>
+    <input placeholder="Name of password" id="passwordName"></input>
+    <button id="savePassword">Save</button>
+    <!-- not sure if button below is necessary (copyPassword) -->
+    <button class="copyPassword" hidden></button>
+    <button id="deleteButton">Delete Passwords</button>
+
+    <input placeholder="Set Password For Account" id="accountPassword"></input>
+    <button id="setAccountPassword">Set Password</button>
+
+    <input placeholder="Verify Account" id="verification"></input>
+    <button id="verifyAccount">Verify</button>
+    <div id="tbody">
+        <table id="passwordTable"></table>
+    </div>
+    <script src="generatePassword.js"></script>
+</body>
+</html>

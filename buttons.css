@@ -1,0 +1,38 @@
+button{
+    background-color: rgba(55, 180, 230, 1);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+    color: white;
+    font-family: Helvetica;
+}
+
+button:hover{
+    background-color: rgba(55, 180, 230, 0.7);
+}
+
+#verifyAccount{
+    background-color: rgba(0, 0, 255, 1);
+}
+
+#verifyAccount:hover{
+    background-color: rgba(0, 0, 255, 0.7);
+}
+
+#deleteButton{
+    background-color:red;
+}
+
+#deleteButton:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+#generate{
+    background-color: rgba(65, 105, 225, 1);
+}
+
+#generate:hover{
+    background-color: rgba(65, 105, 225, 0.7);
+}
+

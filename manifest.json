@@ -1,0 +1,14 @@
+{
+  "name": "Neptune",
+  "description": "Store, create and use passwords! Storing is done with the best protection in mind!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["storage"],
+  "icons": {"16": "neptune16.png",
+            "48": "neptune48back.png",
+            "128": "neptune128back.png"},
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Use extension to (safely) store and create passwords"
+    }
+}
