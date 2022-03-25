@@ -16,8 +16,10 @@ async function loadPasswords(){
         
         var table = document.getElementById("passwordTable");
         var header = table.createTHead();
-        // for each key in the table, add the password name 
-        // and a button with an event listener to retrieve the password
+        /* 
+           for each key in the table, add the password name 
+           and a button with an event listener to retrieve the password
+        */
         for(var i = 0; i < allKeys.length; i++){
             var passwordName = allKeys[i]; 
             var passwordRow = header.insertRow(i);
